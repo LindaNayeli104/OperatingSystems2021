@@ -20,13 +20,16 @@ main(void)
   dup(0);  // stderr
 
   for(;;){
-    printf(1, "init: starting sh\n");
+    printf(1, "Hola mundo, soy Linda\n");
     pid = fork();
     if(pid < 0){
       printf(1, "init: fork failed\n");
       exit();
     }
     if(pid == 0){
+		//Cuando esta en sh se ejecuta una vez el programa sh
+		//Cuando esta en ls se ejecuta una y otra vez el programa ls, no termina
+		//Cuando esta en un programa que no existe, no encuentra que programa ejecutar, se cicla pero muestra el mensaje de error el de failed
       exec("sh", argv);
       printf(1, "init: exec sh failed\n");
       exit();
